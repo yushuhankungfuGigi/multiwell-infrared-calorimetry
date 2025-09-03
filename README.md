@@ -7,7 +7,6 @@ This repository contains the **NiceGUI-based control UI** and **analysis scripts
 - `ui.py` — NiceGUI app to control camera, Arduino/pressure, degas/dosing, and thermal capture.
 - `distance.py` and `emissivity.py` — tiny helpers to configure the camera via the `gasporosity` layer.
 - `calculate_porus.py` — quick analysis/plotting of temperature time series (per well), peak finding, and integrals.
-- `docs/Yushu_Chapter 4_V3.docx` — chapter/manuscript associated with this work.
 - `data/` and `out/` — placeholders for raw CSV exports and generated plots/reports.
 
 ## Requirements
