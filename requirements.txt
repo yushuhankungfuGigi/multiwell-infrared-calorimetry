@@ -1,0 +1,6 @@
+nicegui
+numpy
+pandas
+scipy
+plotly
+# gasporosity  # private/internal dependency — install separately or vendor the package
