@@ -67,12 +67,9 @@ MacOS / Linux: `source venv/bin/activate`
 - Capture and save temperature CSV files in/data/
 
 5. Run post-analysis:
-
-```
-python calculate_porus.py  # edit the path inside, or adapt to accept CLI args
-```
-
+`python calculate_porus.py`  # edit the path inside, or adapt to accept CLI args
 The script normalizes to a chosen blank (default: `8H`), finds peaks, annotates integrals, and shows an interactive figure.
+
 
 ## Tips & Gotchas
 
