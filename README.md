@@ -47,9 +47,9 @@ Python 3.10–3.12 recommended.
 1. (Optional) Create and activate a virtual environment.
 `python -m venv venv`
 
- Windows: `venv\Scripts\activate`
+Windows: `venv\Scripts\activate`
  
- MacOS / Linux: `source venv/bin/activate`
+MacOS / Linux: `source venv/bin/activate`
 
 2. Install dependencies:
 `pip install -r requirements.txt`
