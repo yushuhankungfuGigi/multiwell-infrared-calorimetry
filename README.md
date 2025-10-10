@@ -44,11 +44,8 @@ Python 3.10–3.12 recommended.
 
 ## Quickstart
 
-1. (Optional) Create and activate a virtual environment.
-`python -m venv venv`
-
+1. (Optional) Create and activate a virtual environment. `python -m venv venv`
 Windows: `venv\Scripts\activate`
- 
 MacOS / Linux: `source venv/bin/activate`
 
 2. Install dependencies:
