@@ -1,4 +1,4 @@
-# Multiwell Infrared Calorimetry (UI + Analysis)
+# Multiwell Infrared Calorimetry 
 
 This repository contains the **NiceGUI-based control UI** and **analysis scripts** for a multiwell infrared calorimetry workflow used to rapidly high-throughput porosity screening via gas-dosing–induced thermal signals.
 
