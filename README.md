@@ -1,6 +1,9 @@
 # Multiwell Infrared Calorimetry (UI + Analysis)
 
-This repository contains the **NiceGUI-based control UI** and **analysis scripts** for a multiwell infrared calorimetry workflow used to rapidly screen porosity via gas-dosing–induced thermal signals.
+This repository contains the **NiceGUI-based control UI** and **analysis scripts** for a multiwell infrared calorimetry workflow used to rapidly high-throughput porosity screening via gas-dosing–induced thermal signals.
+
+# Project
+In this study, we developed a multiwell infrared calorimetry platform to measure CO2 adsorption–induced temperature changes in parallel across a wide range of porous materials. The system includes a custom–designed, sealed gas chamber that enables in situ degassing and simultaneous analysis of a large number of samples (up to 96 wells per run). Upon CO2 exposure, the exothermic heat released during adsorption produces localized temperature increases, which are captured in real time across the entire plate using an infrared thermal camera. Beyond qualitative classification, we also explore the semi–quantitative capability of the platform to evaluate adsorption behavior across a class of solid materials, providing a practical proxy for screening both porosity and adsorption performance. 
 
 ## What’s here
 
