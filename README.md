@@ -38,10 +38,7 @@ multiwell-infrared-calorimetry/
 ## Requirements
 
 Python 3.10–3.12 recommended.
-
-```
-pip install -r requirements.txt
-```
+`pip install -r requirements.txt`
 
 > **Note:** This code depends on a private/local package named **`calorimetry`** (e.g., `calorimetry.data_controller.DataController`, `calorimetry.classes.camera.FlirCamera`). You will need to **install or vendor** that package for the UI and helpers to run. If it lives in another repo, add it to `requirements.txt` as a Git URL, or copy the package folder into this project.
 
@@ -49,8 +46,10 @@ pip install -r requirements.txt
 
 1. (Optional) Create and activate a virtual environment.
 `python -m venv venv`
-Windows: `venv\Scripts\activate`
-MacOS / Linux: `source venv/bin/activate`
+
+ Windows: `venv\Scripts\activate`
+ 
+ MacOS / Linux: `source venv/bin/activate`
 
 2. Install dependencies:
 `pip install -r requirements.txt`
@@ -95,10 +94,7 @@ Core libraries:
 `PySpin`(FLIR camera SDK)
 
 Install via:
-
-```
-pip install -r requirements.txt
-```
+`pip install -r requirements.txt`
 
 ## License
 
