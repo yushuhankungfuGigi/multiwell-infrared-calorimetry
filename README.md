@@ -58,9 +58,7 @@ MacOS / Linux: `source venv/bin/activate`
 3. Launch the control dashboard
 `python scripts/ui.py`
 
-The interface runs at http://127.0.0.1:8080
-
-4. Use the UI to:
+4. The interface runs at http://127.0.0.1:8080. Use the UI to:
 
 - Connect and stream from the FLIR infrared camera
 - Define well-plate corners and layout (X×Y wells)
