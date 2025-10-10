@@ -42,6 +42,17 @@ Python 3.10–3.12 recommended.
 
 > **Note:** This code depends on a private/local package named **`calorimetry`** (e.g., `calorimetry.data_controller.DataController`, `calorimetry.classes.camera.FlirCamera`). You will need to **install or vendor** that package for the UI and helpers to run. If it lives in another repo, add it to `requirements.txt` as a Git URL, or copy the package folder into this project.
 
+## Camera SDK Setup 
+
+This project uses **FLIR / Teledyne cameras** via the Spinnaker SDK and its Python bindings (`PySpin`).
+
+- Download and install the **Spinnaker SDK** for your operating system:  
+  👉 [Teledyne Spinnaker SDK Download Page](https://www.teledynevisionsolutions.com/products/spinnaker-sdk/?model=Spinnaker%20SDK&vertical=machine%20vision&segment=iis)
+- During installation, make sure to enable **Python bindings**.
+- After installation, verify that `PySpin` can be imported:
+  `python -c "import PySpin; print('Spinnaker SDK available')`
+
+
 ## Quickstart
 
 1. (Optional) Create and activate a virtual environment. `python -m venv venv`
