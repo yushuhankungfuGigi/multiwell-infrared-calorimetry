@@ -3,14 +3,35 @@
 This repository contains the **NiceGUI-based control UI** and **analysis scripts** for a multiwell infrared calorimetry workflow used to rapidly high-throughput porosity screening via gas-dosing–induced thermal signals.
 
 # Project
-In this study, we developed a multiwell infrared calorimetry platform to measure CO2 adsorption–induced temperature changes in parallel across a wide range of porous materials. The system includes a custom–designed, sealed gas chamber that enables in situ degassing and simultaneous analysis of a large number of samples (up to 96 wells per run). Upon CO2 exposure, the exothermic heat released during adsorption produces localized temperature increases, which are captured in real time across the entire plate using an infrared thermal camera. Beyond qualitative classification, we also explore the semi–quantitative capability of the platform to evaluate adsorption behavior across a class of solid materials, providing a practical proxy for screening both porosity and adsorption performance. 
+his project implements a **multiwell infrared calorimetry workflow** to rapidly screen porous materials for CO₂ adsorption behavior.  
+The system integrates:
+
+- A **NiceGUI-based control dashboard** for hardware coordination (camera, dosing, heating).  
+- A **central Python controller** for experiment sequencing, data capture, and file I/O.  
+- **Post-analysis scripts** for temperature–time signal analysis, peak detection, and heat integration.  
+
+The full pipeline — *from degas to data visualization* — runs with minimal manual intervention.
 
 ## What’s here
 
-- `ui.py` — NiceGUI app to control camera, Arduino/pressure, degas/dosing, and thermal capture.
-- `distance.py` and `emissivity.py` — tiny helpers to configure the camera via the `gasporosity` layer.
-- `calculate_porus.py` — quick analysis/plotting of temperature time series (per well), peak finding, and integrals.
-- `data/` and `out/` — placeholders for raw CSV exports and generated plots/reports.
+multiwell-infrared-calorimetry/
+│
+├── classes/ # Hardware interface modules
+│ ├── camera.py # FLIR infrared camera control (PySpin SDK)
+│ ├── arduino.py # Gas dosing and pressure monitoring via Arduino
+│ ├── pheonix_ii.py # Temperature controller (Phoenix II)
+│ └── threads.py # Thread utilities for concurrent control
+│
+├── data_controller.py # Core orchestrator: manages camera, dosing, heating, CSV writing
+│
+├── scripts/ # User interface and analysis scripts
+│ ├── ui.py # NiceGUI web dashboard for real-time experiment control
+│ ├── calculate_porus.py # Analysis: peak detection and integral quantification
+│ ├── distance.py # Adjust camera distance parameter
+│ ├── emissivity.py # Adjust camera emissivity parameter
+│
+├── data/ # Placeholder for experimental CSV data
+└── out/ # Placeholder for processed plots and reports
 
 ## Requirements
 
@@ -25,20 +46,28 @@ pip install -r requirements.txt
 ## Quickstart
 
 1. (Optional) Create and activate a virtual environment.
-2. Install dependencies: `pip install -r requirements.txt`
-3. Start the UI:
+`python -m venv venv`
+# Windows
+`venv\Scripts\activate`
+# macOS / Linux
+`source venv/bin/activate`
 
-```
-python ui.py
-```
+2. Install dependencies:
+`pip install -r requirements.txt`
 
-This launches NiceGUI (typically http://127.0.0.1:8080). Use the interface to:
-- connect the thermal camera,
-- select well-plate corners & well counts,
-- run degas / dosing,
-- and save **temperature CSV** files into `data/`.
+3. Launch the control dashboard
+`python scripts/ui.py`
+The interface runs at http://127.0.0.1:8080
 
-4. Analyze a CSV:
+4. Use the UI to:
+
+- Connect and stream from the FLIR infrared camera
+- Define well-plate corners and layout (X×Y wells)
+- Control degassing via Phoenix heater
+- Start gas dosing cycles via Arduino
+- Capture and save temperature CSV files in/data/
+
+5. Run post-analysis:
 
 ```
 python calculate_porus.py  # edit the path inside, or adapt to accept CLI args
@@ -48,16 +77,32 @@ The script normalizes to a chosen blank (default: `8H`), finds peaks, annotates 
 
 ## Tips & Gotchas
 
-- `distance.py` currently calls `FlirCamera.set_emissivity(distance)` — if your camera API has a separate `set_distance(...)`, consider updating that script.
-- `calculate_porus.py` has a hard-coded example path in `__main__`. You may want to switch to command-line arguments like:
-  ```python
-  # calculate_porus.py
-  if __name__ == "__main__":
-      import sys
-      csv = sys.argv[1]
-      normalize = sys.argv[2] if len(sys.argv) > 2 else "8H"
-      calculate_porus(csv, normalize=normalize)
-  ```
+- `distance.py` Set object distance in the FLIR camera
+- `emissivity.py` Set emissivity value (0–1) for calibration 
+- `calculate_porus.py` Plot and quantify adsorption heat signals
+
+## Data workflow
+
+- Degas step — controlled heating viaPheonix II
+- Dosing step — Arduino triggers gas injection
+- Thermal capture — FLIR camera records temperature field
+- Per-well processing — automatic grid mapping and averaging
+- CSV logging — temperature vs. time for all wells
+- Analysis — normalization, peak detection, heat integration
+
+## Dependencies
+Core libraries:
+nicegui
+numpy, pandas, scipy,plotly
+opencv-python
+pyserial
+PySpin(FLIR camera SDK)
+
+Install via:
+
+```
+pip install -r requirements.txt
+```
 
 ## License
 
